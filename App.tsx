@@ -185,34 +185,38 @@ function App(): JSX.Element {
             Agregar Estudiante
           </Button>
 
-          <View style={styles.estudianteHeader}>
-            <Text style={styles.estudianteData}>Carnet</Text>
-            <Text style={styles.estudianteData}>Nombre</Text>
-            <Text style={styles.estudianteData}>Promedio</Text>
-            <Text style={styles.estudianteData}>Resultado</Text>
-          </View>
-          <ScrollView>
-            {estudiantes.map((est, index) => (
-              <View key={index} style={styles.estudianteRow}>
-                <Text style={styles.estudianteData}>{est.carnet}</Text>
-                <Text style={styles.estudianteData}>
-                  {est.nombre} {est.apellido}
-                </Text>
-                <Text style={styles.estudianteData}>
-                  {est.promedio.toFixed(2)}
-                </Text>
-                <Text
-                  style={[
-                    styles.estudianteData,
-                    est.resultado === 'Aprobado'
-                      ? styles.aprobado
-                      : styles.reprobado,
-                  ]}>
-                  {est.resultado}
-                </Text>
+          {estudiantes.length > 0 && (
+            <>
+              <View style={styles.estudianteHeader}>
+                <Text style={styles.estudianteData}>Carnet</Text>
+                <Text style={styles.estudianteData}>Nombre</Text>
+                <Text style={styles.estudianteData}>Promedio</Text>
+                <Text style={styles.estudianteData}>Resultado</Text>
               </View>
-            ))}
-          </ScrollView>
+              <ScrollView>
+                {estudiantes.map((est, index) => (
+                  <View key={index} style={styles.estudianteRow}>
+                    <Text style={styles.estudianteData}>{est.carnet}</Text>
+                    <Text style={styles.estudianteData}>
+                      {est.nombre} {est.apellido}
+                    </Text>
+                    <Text style={styles.estudianteData}>
+                      {est.promedio.toFixed(2)}
+                    </Text>
+                    <Text
+                      style={[
+                        styles.estudianteData,
+                        est.resultado === 'Aprobado'
+                          ? styles.aprobado
+                          : styles.reprobado,
+                      ]}>
+                      {est.resultado}
+                    </Text>
+                  </View>
+                ))}
+              </ScrollView>
+            </>
+          )}
         </View>
       </SafeAreaView>
     </View>
